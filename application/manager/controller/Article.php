@@ -96,7 +96,7 @@ class Article extends Base
         $list = $this->infoModel->articleList(2, $data);
         $this->assign('list', $list);
         return $this->fetch('articleList', ['top_name'=>'文章列表', 'version'=>'1.0', 'search'=>
-            $data?$data:['search'=>'']]);
+            $data?$data:['search'=>'','search_date'=>'']]);
     }
 
     public function curdArticle(Request $request)

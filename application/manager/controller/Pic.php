@@ -34,7 +34,6 @@ class Pic extends Base
     {
         if ($request->isPost()) {
             $data = $request->param();
-            //halt($data);
             $_SESSION['think']['__token__'] = $data['__token__'];
             $errorData = (new PicMustValidate())->goCheck();
             if ($errorData !== true) {

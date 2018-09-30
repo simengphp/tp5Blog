@@ -9,7 +9,7 @@
 				<!-- /.box-header -->
 				<div class="box-body">
 					<table id="example1" class="table table-hover table-bordered table-striped">
-						<thead>
+						<thead class="container">
 						<tr>
 							{if condition="strtolower($action) eq 'articlelist'"}
 							<th class="pull-left">
@@ -20,9 +20,10 @@
 							{/if}
 							<form action="" class="" method="post">
 								<th><input class="form-control" id="inputEmail3" name="search"
-								           value="<?php echo isset($search['search'])?$search['search']:''; ?>"
+								           value="{php} echo isset($search['search'])?$search['search']:''; {/php}"
 								           placeholder="文章标题" type="text">
 								</th>
+								{include file='common/dateCommon' /}
 								<th>
 									<button type="submit" class="btn btn-primary">查询</button>
 								</th>

@@ -25,13 +25,26 @@ class Infomation extends Base
 
     public function articleList($num = 10, $data = null, $status = 0)
     {
+        if (isset($data['search_date']) && $data['search_date'] != '请选择日期') {
+            $search_date = $this->getTime($data['search_date']);
+            $start_time = $search_date['start']??'';
+            $end_time = $search_date['end']??time();
+        } else {
+            $start_time = $search_date['start']??'';
+            $end_time = $search_date['end']??time();
+        }
+
         $order = $status?'update_time desc':'create_time desc,sort asc';
-        if (isset($data['search'])) {
-            $list = $this->table_obj->where('status', $status)->where('title', 'like', '%'.$data['search'].'%')->order($order)->
-            paginate($num, false, ['var_page'=>'p', 'query'=>$data]);
+        if (isset($data['search']) || isset($search_date)) {
+            $list = $this->table_obj->where('status', $status)
+                ->where('title', 'like', '%'.$data['search'].'%')->
+                    where('create_time', '>=', $start_time)->where('create_time', '<=', $end_time)->
+                order($order)->paginate($num, false, ['var_page'=>'p', 'query'=>$data]);
         } else {
             $list = $this->table_obj->where('status', $status)->order($order)->paginate($num);
         }
+        //dump($this->getLastSql());
+        //halt($this->getLastSql());
         return $list;
     }
 

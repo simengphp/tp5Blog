@@ -19,4 +19,15 @@ class Base extends Model
         $ret = Db::name($table)->where('id', $id)->limit(1)->update([$field=>$val, 'update_time'=>time()]);
         return $ret;
     }
+
+    public function getTime($time)
+    {
+        list($startTime, $endTime) = explode('-', $time);
+        $startTime = strtotime($startTime);
+        $endTime = strtotime(trim($endTime));
+        $data['start'] = $startTime;
+        $data['end'] = $endTime;
+        //halt($data);
+        return $data;
+    }
 }
