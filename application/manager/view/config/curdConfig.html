@@ -1,0 +1,207 @@
+{extend name="index/index" /}
+{block name="content"}
+<section class="content">
+	<div class="row">
+		<div class="col-md-12">
+	<div class="box box-info">
+		<div class="box-header with-border">
+			<h3 class="box-title">表单信息填写</h3>
+		</div>
+		<!-- /.box-header -->
+		<!-- 错误信息 -->
+		<div class="row">
+			<label for="" class="col-sm-2 control-label"></label>
+			<div class="col-sm-6">
+				{include file="common/contentError" /}
+			</div>
+		</div>
+		<!-- form start -->
+		<form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="id" value="{$Think.session.data.id?$Think.session.data.id:
+						       $ret['id']}">
+			{:token()}
+			<div class="box-body">
+				<div class="form-group">
+					<label for="company" class="col-sm-2 control-label">
+						公司名称
+					</label>
+					<div class="col-sm-6">
+						<input class="form-control" id="company" name="company"
+						       value="{$Think.session.data.company?$Think.session.data.company:
+						       $ret['company']}" placeholder="天津赞普股份有限公司" type="text">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="stock" class="col-sm-2 control-label">
+						股票代码
+					</label>
+					<div class="col-sm-6">
+						<input class="form-control" id="stock" name="stock"
+						       value="{$Think.session.data.stock?$Think.session.data.stock:
+						       $ret['stock']}" placeholder="股票代码" type="text">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="tel" class="col-sm-2 control-label">
+						公司电话
+					</label>
+					<div class="col-sm-6">
+						<input class="form-control" id="tel" name="tel"
+						       value="{$Think.session.data.tel?$Think.session.data.tel:
+						       $ret['tel']}" placeholder="022-5555555" type="text">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="postcode" class="col-sm-2 control-label">
+						公司邮箱
+					</label>
+					<div class="col-sm-6">
+						<input class="form-control" id="postcode" name="postcode"
+						       value="{$Think.session.data.postcode?$Think.session.data.postcode:
+						       $ret['postcode']}" placeholder="zanpu@163.com" type="text">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="address" class="col-sm-2 control-label">
+						公司地址
+					</label>
+					<div class="col-sm-6">
+						<input class="form-control" id="address" name="address"
+						       value="{$Think.session.data.address?$Think.session.data.address:
+						       $ret['address']}" placeholder="天津南开华苑" type="text">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="title" class="col-sm-2 control-label">
+						网站名称
+					</label>
+					<div class="col-sm-6">
+						<input class="form-control" id="title" name="title"
+						       value="{$Think.session.data.title?$Think.session.data.title:
+						       $ret['title']}" placeholder="赞普官网" type="text">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="website_code" class="col-sm-2 control-label">
+						网站备案信息
+					</label>
+					<div class="col-sm-6">
+						<input class="form-control" id="website_code" name="website_code"
+						       value="{$Think.session.data.website_code?$Think.session.data.website_code:
+						       $ret['website_code']}" placeholder="津888888" type="text">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="keys" class="col-sm-2 control-label">
+						网站关键词（SEO）
+					</label>
+					<div class="col-sm-6">
+						<textarea class="form-control" id="keys" name="keys" rows="3" placeholder="赞普;云服务提供商;服务器托管">{$Think.session.data.keys?$Think.session.data.keys:$ret['keys']}</textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="description" class="col-sm-2 control-label">
+						网站描述
+					</label>
+					<div class="col-sm-6">
+						<textarea class="form-control" id="description" name="description" rows="3" placeholder="网站描述">{$Think.session.data.description?$Think.session.data.description:$ret['description']}</textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="" class="col-sm-2 control-label">
+						关于我们
+					</label>
+					<div class="col-sm-6">
+						<textarea id="editor1" name="company_about" rows="10" cols="80" style="visibility: hidden; display: none;">
+							 {$Think.session.data.company_about?$Think.session.data.company_about:
+						       $ret['company_about']}
+						</textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="" class="col-sm-2 control-label">
+						公司文化
+					</label>
+					<div class="col-sm-6">
+						<textarea id="editorCul" name="culture" rows="10" cols="80" style="visibility: hidden; display: none;">
+							 {$Think.session.data.culture?$Think.session.data.culture:
+						       $ret['culture']}
+						</textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="" class="col-sm-2 control-label">
+						联系我们
+					</label>
+					<div class="col-sm-6">
+						<textarea id="contact_me" name="contact_me" rows="10" cols="80" style="visibility: hidden; display: none;">
+							 {$Think.session.data.contact_me?$Think.session.data.contact_me:
+						       $ret['contact_me']}
+						</textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="" class="col-sm-2 control-label">
+						人才理念
+					</label>
+					<div class="col-sm-6">
+						<textarea id="resources" name="resources" rows="10" cols="80" style="visibility: hidden; display: none;">
+							 {$Think.session.data.resources?$Think.session.data.resources:
+						       $ret['resources']}
+						</textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="" class="col-sm-2 control-label">
+						福利待遇
+					</label>
+					<div class="col-sm-6">
+						<textarea id="ben" name="ben" rows="10" cols="80" style="visibility: hidden; display: none;">
+							 {$Think.session.data.ben?$Think.session.data.ben:
+						       $ret['ben']}
+						</textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="" class="col-sm-2 control-label">
+						招聘流程
+					</label>
+					<div class="col-sm-6">
+						<textarea id="timeline" name="timeline" rows="10" cols="80" style="visibility: hidden; display: none;">
+							 {$Think.session.data.timeline?$Think.session.data.timeline:
+						       $ret['timeline']}
+						</textarea>
+					</div>
+				</div>
+				<script src="/static/common/bower_components/ckeditor/ckeditor.js"></script>
+				<script>
+                    CKEDITOR.replace('editor1',
+                        {filebrowserUploadUrl:'/common/commonUpload'})
+                    CKEDITOR.replace('editorCul',
+                        {filebrowserUploadUrl:'/common/commonUpload'})
+                    CKEDITOR.replace('contact_me',
+                        {filebrowserUploadUrl:'/common/commonUpload'})
+                    CKEDITOR.replace('resources',
+                        {filebrowserUploadUrl:'/common/commonUpload'})
+                    CKEDITOR.replace('ben',
+                        {filebrowserUploadUrl:'/common/commonUpload'})
+                    CKEDITOR.replace('timeline',
+                        {filebrowserUploadUrl:'/common/commonUpload'})
+				</script>
+			</div>
+			<!-- /.box-body -->
+			<div class="box-footer">
+				<div class="col-sm-3">
+					<a type="button" href="javascript:history.go(-1)" class="btn btn-default pull-right">返回</a>
+				</div>
+				<div class="col-sm-3">
+					<button type="submit" class="btn btn-info pull-right">提交</button>
+				</div>
+			</div>
+			<!-- /.box-footer -->
+		</form>
+	</div>
+</div>
+	</div>
+</section>
+{/block}

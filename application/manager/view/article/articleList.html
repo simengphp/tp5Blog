@@ -1,0 +1,99 @@
+{extend name="index/index" /}
+{block name="content"}
+
+<section class="content">
+	<div class="row">
+		{include file='common/ajaxErrorSuccess' /}
+		<div class="col-xs-12">
+			<div class="box">
+				<!-- /.box-header -->
+				<div class="box-body">
+					<table id="example1" class="table table-hover table-bordered table-striped">
+						<thead>
+						<tr>
+							{if condition="strtolower($action) eq 'articlelist'"}
+							<th class="pull-left">
+								<a href="/article/curdArticle">
+									<button type="button" class="btn btn-primary">添加</button>
+								</a>
+							</th>
+							{/if}
+							<form action="" class="" method="post">
+								<th><input class="form-control" id="inputEmail3" name="search"
+								           value="<?php echo isset($search['search'])?$search['search']:''; ?>"
+								           placeholder="文章标题" type="text">
+								</th>
+								<th>
+									<button type="submit" class="btn btn-primary">查询</button>
+								</th>
+							</form>
+						</tr>
+						</thead>
+						<thead>
+						<tr>
+							<th>编号</th>
+							<th>文章标题</th>
+							<th>关键字</th>
+							<th>文章浏览量</th>
+							<th>文章作者</th>
+							<th>文章排序</th>
+							<th>添加时间</th>
+							<th>修改时间</th>
+							<th>操作</th>
+						</tr>
+						</thead>
+						<tbody>
+						{empty name="list"}
+							{include file="common/nodata" /}
+						{else /}
+						{volist name='list' id='vo'}
+						<tr>
+							<td>{$vo.id}</td>
+							<td>{$vo.title}</td>
+							<td>{$vo.key|mb_substr=0,10,'utf-8'}</td>
+							<td>
+								<input type="text" class="form-control"
+								       onchange="ajaxData('/common/ajaxEditField',{'table':'infomation','field':'look','value':this.value,'id':{$vo.id}})" value="{$vo.look}">
+							</td>
+							<td>
+								<input type="text" class="form-control"
+								       onchange="ajaxData('/common/ajaxEditField',{'table':'infomation','field':'author','value':this.value,'id':{$vo.id}})" value="{$vo.author}">
+							</td>
+							<td>
+								<input type="text" class="form-control"
+								       onchange="ajaxData('/common/ajaxEditField',{'table':'infomation','field':'sort','value':this.value,'id':{$vo.id}})" value="{$vo.sort}">
+							</td>
+							<td>{$vo.create_time|date='Y-m-d H:i:s',###}</td>
+							<td>{$vo.update_time|date='Y-m-d H:i:s',###}</td>
+							<td>
+								{if condition="strtolower($action) eq 'articlelist'"}
+								<a href="/article/curdArticle/id/{$vo.id}" title="修改" style="color: #0a0a0a">
+									<i class="fa  fa-edit"></i>
+								</a>
+								<a href="/article/restoreDelArticle/id/{$vo.id}/status/9" title="删除" style="color: #0a0a0a">
+									<i class="fa fa-trash-o"></i>
+								</a>
+								{else /}
+								<a href="/article/restoreDelArticle/id/{$vo.id}/status/0" title="还原" style="color: #0a0a0a">
+									<i class="fa fa-recycle"></i>
+								</a>
+								{/if}
+							</td>
+						</tr>
+						{/volist}
+						{/empty}
+						</tbody>
+					</table>
+					<div class="pull-right">
+						{$list->render()}
+					</div>
+				</div>
+				<!-- /.box-body -->
+			</div>
+			<!-- /.box -->
+		</div>
+		<!-- /.col -->
+	</div>
+</section>
+
+{/block}

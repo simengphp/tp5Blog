@@ -1,0 +1,79 @@
+{extend name="index/index" /}
+{block name="content"}
+<section class="content">
+	<div class="row">
+		<div class="col-md-12">
+	<div class="box box-info">
+		<div class="box-header with-border">
+			<h3 class="box-title">表单信息填写</h3>
+		</div>
+		<!-- /.box-header -->
+		<!-- 错误信息 -->
+		<div class="row">
+			<label for="name" class="col-sm-2 control-label"></label>
+			<div class="col-sm-6">
+				{include file="common/contentError" /}
+			</div>
+		</div>
+		<!-- form start -->
+		<form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="id" value="{$Think.session.data.id?$Think.session.data.id:
+						       $ret['id']}">
+			{:token()}
+			<div class="box-body">
+				<div class="form-group">
+					<label for="name" class="col-sm-2 control-label">
+						管理员标签<i style="color: red">*</i>
+					</label>
+					<div class="col-sm-6">
+						<input class="form-control" id="name" name="name"
+						       value="{$Think.session.data.name?$Think.session.data.name:
+						       $ret['name']}" placeholder="超级管理员" type="text">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="account" class="col-sm-2 control-label">
+						管理员账号<i style="color: red">*</i>
+					</label>
+					<div class="col-sm-6">
+						<input class="form-control" name="account"
+						       value="{$Think.session.data.account?$Think.session.data.account:
+						       $ret['account']}" id="account" placeholder="abcde**" type="text">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="password" class="col-sm-2 control-label">
+						管理员密码<i style="color: red">*</i>
+					</label>
+					<div class="col-sm-6">
+						<input class="form-control" name="password"
+						       value="{$Think.session.data.password?$Think.session.data.password:
+						       $ret['password']}" id="password" placeholder="*****" type="password">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="" class="col-sm-2 control-label">管理员头像</label>
+					<div class="col-sm-6">
+						<input name="pic" placeholder="管理员头像" type="file">
+						<input type="hidden" value="{$ret['pic']}" name="pic" >
+						<img src="/uploads/{$Think.session.data.pic?$Think.session.data.pic:
+						       $ret['pic']}" alt="" style="width:50px;height:auto">
+					</div>
+				</div>
+			</div>
+			<!-- /.box-body -->
+			<div class="box-footer">
+				<div class="col-sm-3">
+					<a type="button" href="javascript:history.go(-1)" class="btn btn-default pull-right">返回</a>
+				</div>
+				<div class="col-sm-3">
+					<button type="submit" class="btn btn-info pull-right">提交</button>
+				</div>
+			</div>
+			<!-- /.box-footer -->
+		</form>
+	</div>
+</div>
+	</div>
+</section>
+{/block}

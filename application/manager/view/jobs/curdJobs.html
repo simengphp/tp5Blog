@@ -1,0 +1,196 @@
+{extend name="index/index" /}
+{block name="content"}
+<section class="content">
+	<div class="row">
+		<div class="col-md-12">
+	<div class="box box-info">
+		<div class="box-header with-border">
+			<h3 class="box-title">表单信息填写</h3>
+		</div>
+		<!-- /.box-header -->
+		<!-- 错误信息 -->
+		<div class="row">
+			<label for="" class="col-sm-2 control-label"></label>
+			<div class="col-sm-6">
+				{include file="common/contentError" /}
+			</div>
+		</div>
+		<!-- form start -->
+		<form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="id" value="{$Think.session.data.id?$Think.session.data.id:
+						       $ret['id']}">
+			{:token()}
+			<div class="box-body">
+				<div class="form-group">
+					<label for="title" class="col-sm-2 control-label">
+						岗位名称<i style="color: red">*</i>
+					</label>
+					<div class="col-sm-6">
+						<input class="form-control" id="title" name="title"
+						       value="{$Think.session.data.title?$Think.session.data.title:
+						       $ret['title']}" placeholder="岗位名称：PHP工程师" type="text">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="num" class="col-sm-2 control-label">
+						岗位编号<i style="color: red">*</i>
+					</label>
+					<div class="col-sm-6">
+						<input class="form-control" name="num"
+						       value="{$Think.session.data.num?$Think.session.data.num:
+						       $ret['num']}" id="num" placeholder="岗位编号:00001" type="number">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="jobs_num" class="col-sm-2 control-label">
+						招聘人数<i style="color: red">*</i>
+					</label>
+					<div class="col-sm-6">
+						<input class="form-control" name="jobs_num"
+						       value="{$Think.session.data.jobs_num?$Think.session.data.jobs_num:
+						       $ret['jobs_num']}" id="jobs_num" placeholder="招聘人数" type="number">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="company_size" class="col-sm-2 control-label">
+						公司规模<i style="color: red">*</i>
+					</label>
+					<div class="col-sm-6">
+						<input class="form-control" id="company_size" name="company_size"
+						       value="{$Think.session.data.company_size?$Think.session.data.company_size:
+						       $ret['company_size']}" placeholder="100-499人" type="text">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="company_nature" class="col-sm-2 control-label">
+						公司性质<i style="color: red">*</i>
+					</label>
+					<div class="col-sm-6">
+						<input class="form-control" id="company_nature" name="company_nature"
+						       value="{$Think.session.data.company_nature?$Think.session.data.company_nature:
+						       $ret['company_nature']}" placeholder="民营" type="text">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="company_tmt" class="col-sm-2 control-label">
+						公司行业<i style="color: red">*</i>
+					</label>
+					<div class="col-sm-6">
+						<input class="form-control" id="company_tmt" name="company_tmt"
+						       value="{$Think.session.data.company_tmt?$Think.session.data.company_tmt:
+						       $ret['company_tmt']}" placeholder="公司行业：计算机硬件及网络设备 通信/电信运营商" type="text">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="work_exp" class="col-sm-2 control-label">
+						工作年限<i style="color: red">*</i>
+					</label>
+					<div class="col-sm-6">
+						<input class="form-control" id="work_exp" name="work_exp"
+						       value="{$Think.session.data.work_exp?$Think.session.data.work_exp:
+						       $ret['work_exp']}" placeholder="工作年限：1年" type="text">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="edu" class="col-sm-2 control-label">
+						最低学历<i style="color: red">*</i>
+					</label>
+					<div class="col-sm-6">
+						<input class="form-control" id="edu" name="edu"
+						       value="{$Think.session.data.edu?$Think.session.data.edu:
+						       $ret['edu']}" placeholder="最低学历：大专" type="text">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="salary" class="col-sm-2 control-label">
+						薪资待遇<i style="color: red">*</i>
+					</label>
+					<div class="col-sm-6">
+						<input class="form-control" id="salary" name="salary"
+						       value="{$Think.session.data.salary?$Think.session.data.salary:
+						       $ret['salary']}" placeholder="薪资待遇：面议/10w+/年" type="text">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="job_nature" class="col-sm-2 control-label">
+						工作性质<i style="color: red">*</i>
+					</label>
+					<div class="col-sm-6">
+						<input class="form-control" id="job_nature" name="job_nature"
+						       value="{$Think.session.data.job_nature?$Think.session.data.job_nature:
+						       $ret['job_nature']}" placeholder="工作性质：全职" type="text">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="man_exp" class="col-sm-2 control-label">
+						管理经验<i style="color: red">*</i>
+					</label>
+					<div class="col-sm-6">
+						<input class="form-control" id="man_exp" name="man_exp"
+						       value="{$Think.session.data.man_exp?$Think.session.data.man_exp:
+						       $ret['man_exp']}" placeholder="管理经验：无" type="text">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="" class="col-sm-2 control-label">
+						岗位状态<i style="color: red">*</i>
+					</label>
+					<div class="col-sm-6">
+						<label class="checkbox-inline">
+							<input type="radio" name="jobs_status"
+							       value="0" {if condition="$Think.session.data.jobs_status eq 0 ||
+						       $ret['jobs_status'] eq 0"}checked{/if}> 未招满
+						</label>
+						<label class="checkbox-inline">
+							<input type="radio" name="jobs_status"
+							       value="1" {if condition="$Think.session.data.jobs_status eq 1 ||
+						       $ret['jobs_status'] eq 1"}checked{/if}> 招满
+						</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="" class="col-sm-2 control-label">
+						岗位描述<i style="color: red">*</i>
+					</label>
+					<div class="col-sm-6">
+						<textarea id="editor1" name="job_desc" rows="10" cols="80" style="visibility: hidden; display: none;">
+							 {$Think.session.data.job_desc?$Think.session.data.job_desc:
+						       $ret['job_desc']}
+						</textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="" class="col-sm-2 control-label">
+						岗位要求<i style="color: red">*</i>
+					</label>
+					<div class="col-sm-6">
+						<textarea id="editor" name="job_require" rows="10" cols="80" style="visibility: hidden; display: none;">
+							 {$Think.session.data.job_require?$Think.session.data.job_require:
+						       $ret['job_require']}
+						</textarea>
+					</div>
+				</div>
+				<script src="/static/common/bower_components/ckeditor/ckeditor.js"></script>
+				<script>
+                    CKEDITOR.replace('editor1',
+                        {filebrowserUploadUrl:'/common/commonUpload'})
+                    CKEDITOR.replace('editor',
+                        {filebrowserUploadUrl:'/common/commonUpload'})
+				</script>
+			</div>
+			<!-- /.box-body -->
+			<div class="box-footer">
+				<div class="col-sm-3">
+					<a type="button" href="javascript:history.go(-1)" class="btn btn-default pull-right">返回</a>
+				</div>
+				<div class="col-sm-3">
+					<button type="submit" class="btn btn-info pull-right">提交</button>
+				</div>
+			</div>
+			<!-- /.box-footer -->
+		</form>
+	</div>
+</div>
+	</div>
+</section>
+{/block}

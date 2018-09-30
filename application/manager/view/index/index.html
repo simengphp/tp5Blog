@@ -1,0 +1,23 @@
+{include file='common/header' /}
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+    <!-- 头部 -->
+    {include file='common/top' /}
+    <!-- 左侧导航栏 -->
+    {include file='common/leftMenu' /}
+    <!-- 主要内容 -->
+
+    <div class="content-wrapper">
+        {include file='common/contentHeader' /}
+        {block name="content"}
+        {include file='common/content' /}
+        {/block}
+    </div>
+    <!-- /.content-wrapper -->
+    {include file='common/footer' /}
+    <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+{include file='common/js' /}
+</body>
+</html>

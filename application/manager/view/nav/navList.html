@@ -1,0 +1,151 @@
+{extend name="index/index" /}
+{block name="content"}
+<section class="content">
+	<div class="row">
+		{include file='common/ajaxErrorSuccess' /}
+		<div class="col-xs-12">
+			<div class="box">
+				<!-- /.box-header -->
+				<div class="box-body">
+					<table id="example1" class="table table-hover table-bordered table-striped">
+						<thead>
+						<tr>
+							{if condition="strtolower($action) eq 'navlist'"}
+							<th class="pull-left">
+								<a href="/nav/curdNav">
+									<button type="button" class="btn btn-primary">添加</button>
+								</a>
+							</th>
+							{/if}
+							<form action="" class="" method="post">
+								<th><input class="form-control" id="inputEmail3" name="search"
+								           value="<?php echo isset($search['search'])?$search['search']:''; ?>"
+								           placeholder="导航名称" type="text">
+								</th>
+								<th>
+									<button type="submit" class="btn btn-primary">查询</button>
+								</th>
+							</form>
+						</tr>
+						</thead>
+						<thead>
+						<tr>
+							<th>编号</th>
+							<th>导航名称</th>
+							<th>导航链接</th>
+							<th>导航排序</th>
+							<th>添加时间</th>
+							<th>修改时间</th>
+							<th>操作</th>
+						</tr>
+						</thead>
+						<tbody>
+						{empty name="list"}
+						{include file="common/nodata" /}
+						{else /}
+						{volist name='list' id='vo'}
+						<tr>
+							{if condition='$vo["child_menu"]'}
+								<td>{$vo.id}</td>
+								<td>{$vo.name}</td>
+								<td>
+									<input type="text" class="form-control"
+									       onchange="ajaxData('/common/ajaxEditField',{'table':'navigate','field':'link','value':this.value,'id':{$vo.id}})" name="" id="" value="{$vo.link}">
+								</td>
+								<td>
+									<input type="text" class="form-control"
+									       onchange="ajaxData('/common/ajaxEditField',{'table':'navigate','field':'sort','value':this.value,'id':{$vo.id}})" name="" id="" value="{$vo.sort}">
+								</td>
+								<td>{$vo.create_time|date='Y-m-d H:i:s',###}</td>
+								<td>{$vo.update_time|date='Y-m-d H:i:s',###}</td>
+								<td>
+									{if condition="strtolower($action) eq 'navlist'"}
+									<a href="/nav/curdNav/id/{$vo.id}" title="修改" style="color: #0a0a0a">
+										<i class="fa  fa-edit"></i>
+									</a>
+									<a href="/nav/restoreDelNav/id/{$vo.id}/status/9" title="删除" style="color: #0a0a0a">
+										<i class="fa fa-trash-o"></i>
+									</a>
+									{else /}
+									<a href="/nav/restoreDelNav/id/{$vo.id}/status/0" title="还原" style="color: #0a0a0a">
+										<i class="fa fa-recycle"></i>
+									</a>
+									{/if}
+								</td>
+								{volist name='vo["child_menu"]' id='child'}
+								<tr>
+									<td></td>
+									<td>|--{$child.name}</td>
+									<td>
+										<input type="text" class="form-control"
+										       onchange="ajaxData('/common/ajaxEditField',{'table':'navigate','field':'link','value':this.value,'id':{$child.id}})" name="" id="" value="{$child.link}">
+									</td>
+									<td>
+										<input type="text" class="form-control"
+										       onchange="ajaxData('/common/ajaxEditField',{'table':'navigate','field':'sort','value':this.value,'id':{$child.id}})" name="" id="" value="{$child.sort}">
+									</td>
+									<td>{$child.create_time|date='Y-m-d H:i:s',###}</td>
+									<td>{$child.update_time|date='Y-m-d H:i:s',###}</td>
+									<td>
+										{if condition="strtolower($action) eq 'navlist'"}
+										<a href="/nav/curdNav/id/{$child.id}" title="修改" style="color: #0a0a0a">
+											<i class="fa  fa-edit"></i>
+										</a>
+										<a href="/nav/restoreDelNav/id/{$child.id}/status/9" title="删除" style="color: #0a0a0a">
+											<i class="fa fa-trash-o"></i>
+										</a>
+										{else /}
+										<a href="/nav/restoreDelNav/id/{$child.id}/status/0" title="还原" style="color: #0a0a0a">
+											<i class="fa fa-recycle"></i>
+										</a>
+										{/if}
+									</td>
+								</tr>
+								{/volist}
+							{else /}
+								<td>{$vo.id}</td>
+								<td>{$vo.name}</td>
+								<td>
+									<input type="text" class="form-control"
+									       onchange="ajaxData('/common/ajaxEditField',{'table':'navigate','field':'link','value':this.value,'id':{$vo.id}})" name="" id="" value="{$vo.link}">
+								</td>
+								<td>
+									<input type="text" class="form-control"
+									       onchange="ajaxData('/common/ajaxEditField',{'table':'navigate','field':'sort','value':this.value,'id':{$vo.id}})" name="" id="" value="{$vo.sort}">
+								</td>
+								<td>{$vo.create_time|date='Y-m-d H:i:s',###}</td>
+								<td>{$vo.update_time|date='Y-m-d H:i:s',###}</td>
+								<td>
+									{if condition="strtolower($action) eq 'navlist'"}
+									<a href="/nav/curdNav/id/{$vo.id}" title="修改" style="color: #0a0a0a">
+										<i class="fa  fa-edit"></i>
+									</a>
+									<a href="/nav/restoreDelNav/id/{$vo.id}/status/9" title="删除" style="color: #0a0a0a">
+										<i class="fa fa-trash-o"></i>
+									</a>
+									{else /}
+									<a href="/nav/restoreDelNav/id/{$vo.id}/status/0" title="还原" style="color: #0a0a0a">
+										<i class="fa fa-recycle"></i>
+									</a>
+									{/if}
+								</td>
+							{/if}
+						</tr>
+						{/volist}
+						{/empty}
+						</tbody>
+					</table>
+					<div class="pull-right">
+						{$list->render()}
+					</div>
+				</div>
+				<!-- /.box-body -->
+			</div>
+			<!-- /.box -->
+		</div>
+		<!-- /.col -->
+	</div>
+	<!-- /.row -->
+</section>
+
+{/block}
