@@ -49,6 +49,7 @@ class Admin extends Base
         Session::set('manager_name', $is_true['name']);
         Session::set('manager_last_login_time', $is_true['last_login_time']);
         Session::set('manager_pic', $is_true['pic']);
+        Session::set('admin_role_id', $is_true['role_id']);
 
         return ['code'=>200, 'success'=>'登录成功'];
     }

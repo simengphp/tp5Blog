@@ -11,6 +11,7 @@ namespace app\manager\controller;
 use app\lib\tools\Upload;
 use think\Controller;
 use app\manager\model\Base as baseModel;
+use think\Db;
 use think\Request;
 
 class Base extends Controller
@@ -25,6 +26,22 @@ class Base extends Controller
         if (!session('manager_id') && $request->action() != 'login') {
             $this->redirect('/manager/login');
         }
+        $this->getRoleAction(session('admin_role_id'));
+    }
+
+
+    public function getRoleAction($admin_role_id)
+    {
+        $list = Db::query("SELECT DISTINCT(controller) FROM `zan_permission_group` 
+        where role_id = {$admin_role_id}");
+        foreach ($list as $key => $value) {
+            $list[$key]['menu_title'] = Db::name('permission_group')->
+            where('controller', $value['controller'])->limit(1)->column('menu_title')[0];
+            $list[$key]['action_list'] = Db::name('permission_group')->
+            where('controller', $value['controller'])->select();
+            $list[$key]['menu_count'] = count($list[$key]['action_list']);
+        }
+        $this->assign('menu_list', $list);
     }
 
     public function ajaxEditField(Request $request)
