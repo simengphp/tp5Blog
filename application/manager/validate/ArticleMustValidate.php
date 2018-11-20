@@ -29,5 +29,5 @@ class ArticleMustValidate extends BaseValidate
         'key'  => '文章关键词',
         'class_id'  => '文章分类',
     ];
-    
+
 }
