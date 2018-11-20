@@ -8,6 +8,7 @@
 
 namespace app\manager\validate;
 
+use app\manager\model\Base;
 use think\Request;
 use think\Validate;
 
@@ -30,6 +31,16 @@ class BaseValidate extends Validate
         } else {
             return $field.'格式错误';
         }
+    }
+
+    public function uniqueCommon($value, $table = '', $data = '', $field = '')
+    {
+        $cloudObj = new Base();
+        $is_set = $cloudObj->getOneValidate($table, $field, $value, $data);
+        if (!$is_set) {
+            return false;
+        }
+        return true;
     }
 
     /**判断空值

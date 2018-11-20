@@ -15,7 +15,7 @@ class ArticleMustValidate extends BaseValidate
 {
     /**在Validate这个类里面已经定义了这个属性，我们直接重写*/
     protected $rule = [
-        'title' => 'require|uniqueCommon|token',
+        'title' => 'require|uniqueCommon:article|token',
         'content' => 'require',
         'desc' => 'require',
         'key' => 'require',
@@ -29,14 +29,5 @@ class ArticleMustValidate extends BaseValidate
         'key'  => '文章关键词',
         'class_id'  => '文章分类',
     ];
-
-    public function uniqueCommon($value, $rule = '', $data = '', $field = '')
-    {
-        $classObj = new Infomation();
-        $is_set = $classObj->getOneArticle($value, $data);
-        if (!$is_set) {
-            return ['文章标题已经存在'];
-        }
-        return true;
-    }
+    
 }

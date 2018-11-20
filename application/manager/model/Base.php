@@ -30,4 +30,18 @@ class Base extends Model
         //halt($data);
         return $data;
     }
+
+    public function getOneValidate($tableObj, $field, $value, $data)
+    {
+        if (isset($data['id'])&&$data['id']>0) {
+            $is_set = Db::name($tableObj)->where('status', 0)->where($field, $value)->
+            where('id', '<>', $data['id'])->find();
+        } else {
+            $is_set = Db::name($tableObj)->where('status', 0)->where($field, $value)->find();
+        }
+        if ($is_set) {
+            return false;
+        }
+        return true;
+    }
 }
