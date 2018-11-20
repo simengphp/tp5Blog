@@ -17,6 +17,10 @@ Route::any('manager/controllerList', 'manager/Admin/controllerList');
 Route::any('manager/curdController', 'manager/Admin/curdController');
 Route::any('manager/restoreDelController', 'manager/Admin/restoreDelController');
 
+    Route::any('manager/actionList', 'manager/Admin/actionList');
+    Route::any('manager/curdAction', 'manager/Admin/curdAction');
+    Route::any('manager/restoreDelAction', 'manager/Admin/restoreDelAction');
+
 /**文章分类相关*/
 Route::any('article/classList', 'manager/Article/classList');
 Route::any('article/curdClass', 'manager/Article/curdClass');
