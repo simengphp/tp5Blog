@@ -35,6 +35,13 @@ class ControllerGroup extends Base
         return $list;
     }
 
+    public function controllerListShow()
+    {
+        $order = 'create_time desc,sort asc';
+        $list=$this->tableObj->where('status', 0)->order($order)->select();
+        return $list;
+    }
+
     public function curdMess(Request $request)
     {
         $data = $request->param();

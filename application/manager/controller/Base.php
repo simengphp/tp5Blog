@@ -26,7 +26,9 @@ class Base extends Controller
         if (!session('manager_id') && $request->action() != 'login') {
             $this->redirect('/manager/login');
         }
-        $this->getRoleAction(session('admin_role_id'));
+        if (session('admin_role_id')) {
+            $this->getRoleAction(session('admin_role_id'));
+        }
     }
 
 

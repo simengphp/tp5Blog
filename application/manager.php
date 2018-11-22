@@ -22,6 +22,9 @@ Route::any('manager/restoreDelAction', 'manager/Admin/restoreDelAction');
 Route::any('manager/roleList', 'manager/Admin/roleList');
 Route::any('manager/curdRole', 'manager/Admin/curdRole');
 Route::any('manager/restoreDelRole', 'manager/Admin/restoreDelRole');
+Route::any('/manager/roleShow', 'manager/Admin/addRole');
+Route::any('/manager/add', 'manager/Admin/addRole');
+
 
 /**文章分类相关*/
 Route::any('article/classList', 'manager/Article/classList');
@@ -66,3 +69,4 @@ Route::any('pic/picList', 'manager/Pic/picList');
 Route::any('pic/picTrash', 'manager/Pic/picTrash');
 Route::any('pic/restoreDelPic', 'manager/Pic/restoreDelPic');
 Route::any('pic/curdPic', 'manager/Pic/curdPic');
+

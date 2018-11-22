@@ -265,4 +265,28 @@ class Admin extends Base
             $this->error($status ? '删除失败' : '还原', [], [], 1);
         }
     }
+
+
+
+    /**url
+     * 展示
+     * /manager/roleShow
+     * 添加
+     * /manager/add
+     */
+    public function addRole()
+    {
+        if (request()->post()) {
+
+        } else {
+            $data = request()->param();
+            /**获取所有的控制器和方法名称*/
+            $list = $this->controllerGroup->controllerListShow();
+            foreach ($list as $key => $value) {
+                $list[$key]['action_list'] = $this->actionGroup->actionListShow($value['id']);
+            }
+            $this->assign('data', $data);
+            return $this->fetch('addRole', ['top_name'=>'导航列表', 'version'=>'1.0', 'list'=>$list]);
+        }
+    }
 }

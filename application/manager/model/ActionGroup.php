@@ -35,6 +35,13 @@ class ActionGroup extends Base
         return $list;
     }
 
+    public function actionListShow($id)
+    {
+        $order = 'create_time desc,sort asc';
+        $list=$this->tableObj->where('controller_id', $id)->where('status', 0)->order($order)->select();
+        return $list;
+    }
+
     public function curdMess(Request $request)
     {
         $data = $request->param();
