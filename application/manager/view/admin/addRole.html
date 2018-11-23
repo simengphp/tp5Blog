@@ -21,14 +21,19 @@
 						       $data['id']}">
 			{:token()}
 			<div class="box-body">
-				{volist name='list' id='vo'}
+				{volist name='list' id='vo' key='key'}
+				{assign name="etype" value="$key" /}
 				<div class="form-group">
 					<label for="" class="col-sm-2 control-label">
 						{$vo['name']}
+						<input type="hidden" value="{$vo['name']}" name="menu_title[]">
+						<input type="hidden" value="{$vo['value']}" name="controller[]">
 					</label>
 					{volist name="vo['action_list']" id='child'}
 					<label class="checkbox-inline">
-						<input type="checkbox" class="" name="" id="">{$child['name']}
+						<input type="checkbox" class=""
+						       name="action_detail[{$etype-1}][]" value="{$child['action']}"
+						       id="">{$child['name']}
 					</label>
 					{/volist}
 				</div>

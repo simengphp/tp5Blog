@@ -10,6 +10,7 @@ namespace app\manager\controller;
 
 use app\manager\model\ActionGroup;
 use app\manager\model\ControllerGroup;
+use app\manager\model\PermissionGroup;
 use app\manager\model\Role;
 use app\manager\validate\ActionMustValidate;
 use app\manager\validate\AdminMustValidate;
@@ -277,7 +278,20 @@ class Admin extends Base
     public function addRole()
     {
         if (request()->post()) {
-
+            //var_dump(request()->param());exit();
+            $data = request()->param();
+            foreach ($data['action_detail'] as $key => $value) {
+                foreach ($value as $child_key => $child_val) {
+                    $save_data['menu_title'] = $data['menu_title'][$key];
+                    $save_data['controller'] = $data['controller'][$key];
+                    $save_data['action_detail'] = $value[$child_key];
+                    $save_data['role_id'] = $data['id'];
+                    /**通过方法明细，获取获取的名称*/
+                    $save_data['name'] = ActionGroup::getOneAction($value[$child_key])['name'];
+                    //var_dump($save_data);
+                    PermissionGroup::curdMess($save_data);
+                }
+            }
         } else {
             $data = request()->param();
             /**获取所有的控制器和方法名称*/

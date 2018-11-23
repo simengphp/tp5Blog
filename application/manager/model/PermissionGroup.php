@@ -18,4 +18,10 @@ class PermissionGroup extends Base
         $list = Db::name('controller_group')->where('status', 0)->
         order('sort', 'asc')->select();
     }
+
+    public static function curdMess($data)
+    {
+        $ret = Db::name('permission_group')->insert($data);
+        return $ret;
+    }
 }

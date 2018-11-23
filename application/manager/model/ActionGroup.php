@@ -64,4 +64,10 @@ class ActionGroup extends Base
         $ret = $this->tableObj->where('id', $id)->limit(1)->find();
         return $ret;
     }
+
+    public static function getOneAction($action)
+    {
+        $ret = self::where('action', $action)->limit(1)->find();
+        return $ret;
+    }
 }
