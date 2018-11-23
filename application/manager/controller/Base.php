@@ -37,8 +37,10 @@ class Base extends Controller
         $list = Db::query("SELECT DISTINCT(controller) FROM `zan_permission_group` 
         where role_id = {$admin_role_id}");
         foreach ($list as $key => $value) {
-            $list[$key]['menu_title'] = Db::name('permission_group')->
-            where('controller', $value['controller'])->limit(1)->column('menu_title')[0];
+            $per_filed_ret = Db::name('permission_group')->
+            where('controller', $value['controller'])->limit(1)->find();
+            $list[$key]['menu_title'] = $per_filed_ret['menu_title'];
+            $list[$key]['icon'] = $per_filed_ret['icon'];
             $list[$key]['action_list'] = Db::name('permission_group')->
             where('controller', $value['controller'])->select();
             $list[$key]['menu_count'] = count($list[$key]['action_list']);

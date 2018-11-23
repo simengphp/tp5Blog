@@ -15,136 +15,136 @@
 		<!-- sidebar menu: : style can be found in sidebar.less -->
 		<ul class="sidebar-menu" data-widget="tree">
 			<li class="header">导航栏</li>
-			<!--{volist name='menu_list' id='vo'}-->
-			<!--<li class="active treeview {$vo['controller']} menu-open">-->
+			{volist name='menu_list' id='vo'}
+			<li class="active treeview {$vo['controller']} menu-open">
+				<a href="#">
+					<i class="fa {$vo['icon']}"></i> <span>{$vo['menu_title']}</span>
+					<span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+				<span class="label label-primary pull-right">{$vo['menu_count']}</span>
+            </span>
+				</a>
+				<ul class="treeview-menu">
+					{volist name='vo["action_list"]' id='child'}
+					<li><a href="{$child['action_detail']}"><i class="fa fa-circle-o"></i>{$child['name']}</a></li>
+					{/volist}
+				</ul>
+			</li>
+			{/volist}
+			<!--<li class="active treeview admin menu-open">-->
 				<!--<a href="#">-->
-					<!--<i class="fa fa-user-plus"></i> <span>{$vo['menu_title']}</span>-->
+					<!--<i class="fa fa-user-plus"></i> <span>管理员</span>-->
 					<!--<span class="pull-right-container">-->
               <!--<i class="fa fa-angle-left pull-right"></i>-->
-				<!--<span class="label label-primary pull-right">{$vo['menu_count']}</span>-->
+				<!--<span class="label label-primary pull-right">2</span>-->
             <!--</span>-->
 				<!--</a>-->
 				<!--<ul class="treeview-menu">-->
-					<!--{volist name='vo["action_list"]' id='child'}-->
-					<!--<li><a href="{$child['action_detail']}"><i class="fa fa-circle-o"></i>{$child['name']}</a></li>-->
-					<!--{/volist}-->
+					<!--<li><a href="/manager/adminList"><i class="fa fa-circle-o"></i>管理员列表</a></li>-->
+					<!--<li><a href="/manager/adminTrash"><i class="fa fa-circle-o"></i>管理员回收站</a></li>-->
+					<!--<li><a href="/manager/controllerList"><i class="fa fa-circle-o"></i>控制器列表</a></li>-->
+					<!--<li><a href="/manager/actionList"><i class="fa fa-circle-o"></i>方法列表</a></li>-->
+					<!--<li><a href="/manager/roleList"><i class="fa fa-circle-o"></i>角色列表</a></li>-->
 				<!--</ul>-->
 			<!--</li>-->
-			<!--{/volist}-->
-			<li class="active treeview admin menu-open">
-				<a href="#">
-					<i class="fa fa-user-plus"></i> <span>管理员</span>
-					<span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-				<span class="label label-primary pull-right">2</span>
-            </span>
-				</a>
-				<ul class="treeview-menu">
-					<li><a href="/manager/adminList"><i class="fa fa-circle-o"></i>管理员列表</a></li>
-					<li><a href="/manager/adminTrash"><i class="fa fa-circle-o"></i>管理员回收站</a></li>
-					<li><a href="/manager/controllerList"><i class="fa fa-circle-o"></i>控制器列表</a></li>
-					<li><a href="/manager/actionList"><i class="fa fa-circle-o"></i>方法列表</a></li>
-					<li><a href="/manager/roleList"><i class="fa fa-circle-o"></i>角色列表</a></li>
-				</ul>
-			</li>
-			<li class="treeview article">
-				<a href="#">
-					<i class="fa fa-suitcase"></i>
-					<span>文章管理</span>
-					<span class="pull-right-container">
-					<i class="fa fa-angle-left pull-right"></i>
-              <span class="label label-primary pull-right">4</span>
-            </span>
-				</a>
-				<ul class="treeview-menu">
-					<li><a href="/article/classList"><i class="fa fa-circle-o"></i>文章分类</a></li>
-					<li><a href="/article/classTrash"><i class="fa fa-circle-o"></i>文章分类回收站</a></li>
-					<li><a href="/article/articleList"><i class="fa fa-circle-o"></i>文章列表</a></li>
-					<li><a href="/article/articleTrash"><i class="fa fa-circle-o"></i>文章列表回收站</a></li>
-				</ul>
-			</li>
-			<li class="treeview friend">
-				<a href="#">
-					<i class="fa fa-male"></i>
-					<span>友链管理</span>
-					<span class="pull-right-container">
-					<i class="fa fa-angle-left pull-right"></i>
-              <span class="label label-primary pull-right">2</span>
-            </span>
-				</a>
-				<ul class="treeview-menu">
-					<li><a href="/friend/linkList"><i class="fa fa-circle-o"></i>友链列表</a></li>
-					<li><a href="/friend/linkTrash"><i class="fa fa-circle-o"></i>友链回收站</a></li>
-				</ul>
-			</li>
-			<li class="treeview nav">
-				<a href="#">
-					<i class="fa fa-navicon"></i>
-					<span>导航管理</span>
-					<span class="pull-right-container">
-					<i class="fa fa-angle-left pull-right"></i>
-              <span class="label label-primary pull-right">2</span>
-            </span>
-				</a>
-				<ul class="treeview-menu">
-					<li><a href="/nav/navList"><i class="fa fa-circle-o"></i>导航列表</a></li>
-					<li><a href="/nav/navTrash"><i class="fa fa-circle-o"></i>导航回收站</a></li>
-				</ul>
-			</li>
-			<li class="treeview jobs">
-				<a href="#">
-					<i class="fa fa-suitcase"></i>
-					<span>招聘管理</span>
-					<span class="pull-right-container">
-					<i class="fa fa-angle-left pull-right"></i>
-              <span class="label label-primary pull-right">2</span>
-            </span>
-				</a>
-				<ul class="treeview-menu">
-					<li><a href="/jobs/jobsList"><i class="fa fa-circle-o"></i>招聘列表</a></li>
-					<li><a href="/jobs/jobsTrash"><i class="fa fa-circle-o"></i>招聘回收站</a></li>
-				</ul>
-			</li>
-			<li class="treeview message">
-				<a href="#">
-					<i class="fa fa-newspaper-o"></i>
-					<span>留言管理</span>
-					<span class="pull-right-container">
-					<i class="fa fa-angle-left pull-right"></i>
-              <span class="label label-primary pull-right">1</span>
-            </span>
-				</a>
-				<ul class="treeview-menu">
-					<li><a href="/message/messageList"><i class="fa fa-circle-o"></i>留言列表</a></li>
-				</ul>
-			</li>
-			<li class="treeview pic">
-				<a href="#">
-					<i class="fa fa-file-image-o"></i>
-					<span>图片管理</span>
-					<span class="pull-right-container">
-					<i class="fa fa-angle-left pull-right"></i>
-              <span class="label label-primary pull-right">2</span>
-            </span>
-				</a>
-				<ul class="treeview-menu">
-					<li><a href="/pic/picList"><i class="fa fa-circle-o"></i>图片列表</a></li>
-					<li><a href="/pic/picTrash"><i class="fa fa-circle-o"></i>图片回收站</a></li>
-				</ul>
-			</li>
-			<li class="treeview config">
-				<a href="#">
-					<i class="fa fa-wrench"></i>
-					<span>网站配置管理</span>
-					<span class="pull-right-container">
-					<i class="fa fa-angle-left pull-right"></i>
-              <span class="label label-primary pull-right">1</span>
-            </span>
-				</a>
-				<ul class="treeview-menu">
-					<li><a href="/config/curdConfig"><i class="fa fa-circle-o"></i>配置选项</a></li>
-				</ul>
-			</li>
+			<!--<li class="treeview article">-->
+				<!--<a href="#">-->
+					<!--<i class="fa fa-suitcase"></i>-->
+					<!--<span>文章管理</span>-->
+					<!--<span class="pull-right-container">-->
+					<!--<i class="fa fa-angle-left pull-right"></i>-->
+              <!--<span class="label label-primary pull-right">4</span>-->
+            <!--</span>-->
+				<!--</a>-->
+				<!--<ul class="treeview-menu">-->
+					<!--<li><a href="/article/classList"><i class="fa fa-circle-o"></i>文章分类</a></li>-->
+					<!--<li><a href="/article/classTrash"><i class="fa fa-circle-o"></i>文章分类回收站</a></li>-->
+					<!--<li><a href="/article/articleList"><i class="fa fa-circle-o"></i>文章列表</a></li>-->
+					<!--<li><a href="/article/articleTrash"><i class="fa fa-circle-o"></i>文章列表回收站</a></li>-->
+				<!--</ul>-->
+			<!--</li>-->
+			<!--<li class="treeview friend">-->
+				<!--<a href="#">-->
+					<!--<i class="fa fa-male"></i>-->
+					<!--<span>友链管理</span>-->
+					<!--<span class="pull-right-container">-->
+					<!--<i class="fa fa-angle-left pull-right"></i>-->
+              <!--<span class="label label-primary pull-right">2</span>-->
+            <!--</span>-->
+				<!--</a>-->
+				<!--<ul class="treeview-menu">-->
+					<!--<li><a href="/friend/linkList"><i class="fa fa-circle-o"></i>友链列表</a></li>-->
+					<!--<li><a href="/friend/linkTrash"><i class="fa fa-circle-o"></i>友链回收站</a></li>-->
+				<!--</ul>-->
+			<!--</li>-->
+			<!--<li class="treeview nav">-->
+				<!--<a href="#">-->
+					<!--<i class="fa fa-navicon"></i>-->
+					<!--<span>导航管理</span>-->
+					<!--<span class="pull-right-container">-->
+					<!--<i class="fa fa-angle-left pull-right"></i>-->
+              <!--<span class="label label-primary pull-right">2</span>-->
+            <!--</span>-->
+				<!--</a>-->
+				<!--<ul class="treeview-menu">-->
+					<!--<li><a href="/nav/navList"><i class="fa fa-circle-o"></i>导航列表</a></li>-->
+					<!--<li><a href="/nav/navTrash"><i class="fa fa-circle-o"></i>导航回收站</a></li>-->
+				<!--</ul>-->
+			<!--</li>-->
+			<!--<li class="treeview jobs">-->
+				<!--<a href="#">-->
+					<!--<i class="fa fa-suitcase"></i>-->
+					<!--<span>招聘管理</span>-->
+					<!--<span class="pull-right-container">-->
+					<!--<i class="fa fa-angle-left pull-right"></i>-->
+              <!--<span class="label label-primary pull-right">2</span>-->
+            <!--</span>-->
+				<!--</a>-->
+				<!--<ul class="treeview-menu">-->
+					<!--<li><a href="/jobs/jobsList"><i class="fa fa-circle-o"></i>招聘列表</a></li>-->
+					<!--<li><a href="/jobs/jobsTrash"><i class="fa fa-circle-o"></i>招聘回收站</a></li>-->
+				<!--</ul>-->
+			<!--</li>-->
+			<!--<li class="treeview message">-->
+				<!--<a href="#">-->
+					<!--<i class="fa fa-newspaper-o"></i>-->
+					<!--<span>留言管理</span>-->
+					<!--<span class="pull-right-container">-->
+					<!--<i class="fa fa-angle-left pull-right"></i>-->
+              <!--<span class="label label-primary pull-right">1</span>-->
+            <!--</span>-->
+				<!--</a>-->
+				<!--<ul class="treeview-menu">-->
+					<!--<li><a href="/message/messageList"><i class="fa fa-circle-o"></i>留言列表</a></li>-->
+				<!--</ul>-->
+			<!--</li>-->
+			<!--<li class="treeview pic">-->
+				<!--<a href="#">-->
+					<!--<i class="fa fa-file-image-o"></i>-->
+					<!--<span>图片管理</span>-->
+					<!--<span class="pull-right-container">-->
+					<!--<i class="fa fa-angle-left pull-right"></i>-->
+              <!--<span class="label label-primary pull-right">2</span>-->
+            <!--</span>-->
+				<!--</a>-->
+				<!--<ul class="treeview-menu">-->
+					<!--<li><a href="/pic/picList"><i class="fa fa-circle-o"></i>图片列表</a></li>-->
+					<!--<li><a href="/pic/picTrash"><i class="fa fa-circle-o"></i>图片回收站</a></li>-->
+				<!--</ul>-->
+			<!--</li>-->
+			<!--<li class="treeview config">-->
+				<!--<a href="#">-->
+					<!--<i class="fa fa-wrench"></i>-->
+					<!--<span>网站配置管理</span>-->
+					<!--<span class="pull-right-container">-->
+					<!--<i class="fa fa-angle-left pull-right"></i>-->
+              <!--<span class="label label-primary pull-right">1</span>-->
+            <!--</span>-->
+				<!--</a>-->
+				<!--<ul class="treeview-menu">-->
+					<!--<li><a href="/config/curdConfig"><i class="fa fa-circle-o"></i>配置选项</a></li>-->
+				<!--</ul>-->
+			<!--</li>-->
 		</ul>
 	</section>
 	<!-- /.sidebar -->

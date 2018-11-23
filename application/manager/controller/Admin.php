@@ -278,12 +278,18 @@ class Admin extends Base
     public function addRole()
     {
         if (request()->post()) {
-            //var_dump(request()->param());exit();
             $data = request()->param();
+            if ($data['id']) {
+                PermissionGroup::delRolePermission($data['id']);
+            } else {
+                $this->error('非法操作');
+            }
+            //var_dump(request()->param());exit();
             foreach ($data['action_detail'] as $key => $value) {
                 foreach ($value as $child_key => $child_val) {
                     $save_data['menu_title'] = $data['menu_title'][$key];
                     $save_data['controller'] = $data['controller'][$key];
+                    $save_data['icon'] = $data['icon'][$key];
                     $save_data['action_detail'] = $value[$child_key];
                     $save_data['role_id'] = $data['id'];
                     /**通过方法明细，获取获取的名称*/
@@ -292,15 +298,19 @@ class Admin extends Base
                     PermissionGroup::curdMess($save_data);
                 }
             }
+            $this->success('操作成功', '/manager/roleList', [], 1);
         } else {
             $data = request()->param();
             /**获取所有的控制器和方法名称*/
             $list = $this->controllerGroup->controllerListShow();
             foreach ($list as $key => $value) {
-                $list[$key]['action_list'] = $this->actionGroup->actionListShow($value['id']);
+                $action_list = $this->actionGroup->actionListShow($value['id']);
+                foreach ($action_list as $k => $v) {
+                    $action_list[$k]['is_on'] = PermissionGroup::getOnePermission($v['action'], $data['id']);
+                }
+                $list[$key]['action_list'] = $action_list;
             }
             $this->assign('data', $data);
-            //var_dump($list);
             return $this->fetch('addRole', ['top_name'=>'导航列表', 'version'=>'1.0', 'list'=>$list]);
         }
     }
