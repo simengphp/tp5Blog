@@ -286,6 +286,7 @@ class Admin extends Base
                 $list[$key]['action_list'] = $this->actionGroup->actionListShow($value['id']);
             }
             $this->assign('data', $data);
+            //var_dump($list);
             return $this->fetch('addRole', ['top_name'=>'导航列表', 'version'=>'1.0', 'list'=>$list]);
         }
     }
