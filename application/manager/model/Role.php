@@ -35,6 +35,13 @@ class Role extends Base
         return $list;
     }
 
+    public static function roleShow()
+    {
+        $order = 'create_time desc,sort asc';
+        $list=self::where('status', 0)->order($order)->select();
+        return $list;
+    }
+
     public function curdMess(Request $request)
     {
         $data = $request->param();

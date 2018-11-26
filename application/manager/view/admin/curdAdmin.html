@@ -52,6 +52,21 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<label for="role_id" class="col-sm-2 control-label">
+						管理员角色
+					</label>
+					<div class="col-sm-6">
+						<select class="form-control" id="role_id" name="role_id">
+							<option value="">请选择管理员角色..</option>
+							{volist name='ret["role_list"]' id='vo'}
+							<option value="{$vo.id}"
+							        {if condition="$Think.session.data.role_id eq $vo.id ||
+						       $ret['role_id'] eq $vo.id"}selected{/if}>{$vo.name}</option>
+							{/volist}
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
 					<label for="" class="col-sm-2 control-label">管理员头像</label>
 					<div class="col-sm-6">
 						<input name="pic" placeholder="管理员头像" type="file">

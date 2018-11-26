@@ -83,10 +83,12 @@ class Admin extends Base
                 $ret['id'] = 0;
                 $ret['name'] = '';
                 $ret['account'] = '';
-                $ret['password'] = 'zanpu';
+                $ret['password'] = 'simengphp';
                 $ret['pic'] = '';
             }
-            return $this->fetch('curdAdmin', ['top_name' => '管理员列表', 'version' => '1.0', 'ret' => $ret]);
+            $ret['role_list'] = Role::roleShow();
+            return $this->fetch('curdAdmin', ['top_name' => '管理员列表',
+                'version' => '1.0', 'ret' => $ret]);
         }
     }
 
